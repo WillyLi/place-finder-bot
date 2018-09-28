@@ -30,6 +30,12 @@ export default {
     padding: 0;
     margin: 0;
     list-style: none;
+    background: #eaeaea;
+    & > li {
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      margin-bottom: 20px;
+    }
   }
 }
 </style>

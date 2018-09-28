@@ -16,8 +16,8 @@ export default {
   },
   beforeMount () {
     //  Request nearby places data from google place api
-    let location = this.$route.query.test.trim()
-    let type = this.$route.query.type.trim()
+    let location = this.$route.query.location.trim()
+    let type = this.$route.query.types.trim()
     let googleKey = process.env.googleKey
 
     // TODO: cors work around by cors-anywhere

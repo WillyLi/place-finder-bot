@@ -75,6 +75,7 @@ export default {
     width: 100%;
     height: 200px;
     background-size: cover;
+    background-position: center center;
   }
   &_actions {
     display: table;
@@ -85,9 +86,22 @@ export default {
       text-align: center;
       padding: 10px 0;
       text-decoration: none;
-      background: #008800;
-      color: #fff;
+      color: #008800;
+      font-weight: bold;
     }
+  }
+  &_text {
+    text-align: left;
+    padding: 0 20px;
+    margin-top: 10px;
+  }
+  &_name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  &_vicinity {
+    font-size: 13px;
+    margin-top: 5px;
   }
 }
 </style>
