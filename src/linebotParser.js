@@ -37,7 +37,7 @@ bot.on('message', function (event) {
         type: 'buttons',
         text: '你在找哪種地點呢？',
         imageAspectRatio: 'rectangle',
-        imageSize: 'contain',
+        imageSize: 'cover',
         thumbnailImageUrl: 'https://img.appledaily.com.tw/images/ReNews/20160311/640_0bdb7a5f591c3ebc9fe498d458fe7d0b.jpg',
         imageBackgroundColor: '#00cd02',
         actions: [{
