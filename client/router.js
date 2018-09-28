@@ -11,7 +11,7 @@ export default new VueRouter({
     component: Home
   },
   {
-    path: '/finder-list',
+    path: '/app/finder-list',
     component: FinderList,
     query: {
       location: 'private',
@@ -19,7 +19,7 @@ export default new VueRouter({
     }
   },
   {
-    path: '/finder-detail',
+    path: '/app/finder-detail',
     component: FinderDetail
   }
   ]

@@ -1,3 +1,7 @@
+// apply environment variables
+const config = require('../config/prod.env')
+process.env = Object.assign(process.env, config)
+
 const express = require('express')
 const fs = require('fs')
 const path = require('path')
@@ -6,7 +10,8 @@ const linebotParser = require('../src/linebotParser')
 const app = express()
 
 app.use(express.static(path.resolve(__dirname, '../dist')))
-app.get('/', function (req, res) {
+
+app.get('/app/*', function (req, res) {
   var html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8')
   res.send(html)
 })

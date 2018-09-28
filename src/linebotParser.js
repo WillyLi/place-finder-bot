@@ -1,9 +1,11 @@
 const linebot = require('linebot')
+console.log(process.env.channelId)
 const bot = linebot({
-  channelId: '1610106375',
-  channelSecret: '2ff2ee93a2543970d98feeb78958fc77',
-  channelAccessToken: 'GuwaYCruI+VDwEp/gWZ4O61Wx7WzOBu5/5/Ir1mybSuDfY3ur2jjjIKZPZTjz7iQ6v7XBTEP+zfDxq2KzHlpuaJZUV7wPLIjkhrVMcjnn72qYzD4SN5u98usLFkT96r9EW6DglSSrb7rmo6ryOt7dAdB04t89/1O/w1cDnyilFU='
+  channelId: process.env.channelId,
+  channelSecret: process.env.channelSecret,
+  channelAccessToken: process.env.channelAccessToken
 })
+
 bot.on('message', function (event) {
   if (event.message.type === 'text') {
     event.reply({
@@ -14,7 +16,7 @@ bot.on('message', function (event) {
         text: '你想知道哪裡的餐廳嗎？找不到最近的加油站？點擊下方按鈕[傳送位置資訊]，PlaceFinder幫你找到你想找的地點！',
         imageAspectRatio: 'rectangle',
         imageSize: 'contain',
-        thumbnailImageUrl: 'https://static.newmobilelife.com/wp-content/uploads/2018/03/share-location-with-iphone_03.png',
+        thumbnailImageUrl: process.env.domain + 'static/brownThinking.jpg',
         imageBackgroundColor: '#ffffff',
         actions: [{
           type: 'location',
@@ -38,27 +40,27 @@ bot.on('message', function (event) {
         text: '你在找哪種地點呢？',
         imageAspectRatio: 'rectangle',
         imageSize: 'cover',
-        thumbnailImageUrl: 'https://img.appledaily.com.tw/images/ReNews/20160311/640_0bdb7a5f591c3ebc9fe498d458fe7d0b.jpg',
+        thumbnailImageUrl: process.env.domain + 'static/hangout.jpg',
         imageBackgroundColor: '#00cd02',
         actions: [{
           type: 'uri',
           label: '餐廳',
-          uri: 'line://app/1610106375-95yDl55L?types=restaurant&location=' + location
+          uri: 'line://app/' + process.env.listLiffID + '?types=restaurant&location=' + location
         },
         {
           type: 'uri',
           label: '藥局',
-          uri: 'line://app/1610106375-95yDl55L?types=pharmacy&location=' + location
+          uri: 'line://app/' + process.env.listLiffID + '?types=pharmacy&location=' + location
         },
         {
           type: 'uri',
           label: '加油站',
-          uri: 'line://app/1610106375-95yDl55L?types=gas_station&location=' + location
+          uri: 'line://app/' + process.env.listLiffID + '?types=gas_station&location=' + location
         },
         {
           type: 'uri',
           label: '便利商店',
-          uri: 'line://app/1610106375-95yDl55L?types=convenience_store&location=' + location
+          uri: 'line://app/' + process.env.listLiffID + '?types=convenience_store&location=' + location
         }
         ]
       }

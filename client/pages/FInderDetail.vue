@@ -1,6 +1,6 @@
 <template>
   <div id="finderDetail">
-    detail
+    {{placeID}}
   </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
   components: { },
   data: () => {
     return {}
+  },
+  computed: {
+    placeID () {
+      return this.$route.query.place_id
+    }
   }
 }
 </script>
