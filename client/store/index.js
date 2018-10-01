@@ -10,7 +10,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     places: [],
-    location: ''
+    location: '',
+    detail: {}
   },
   getters,
   actions,

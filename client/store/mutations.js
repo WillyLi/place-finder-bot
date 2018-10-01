@@ -12,5 +12,8 @@ export default {
   },
   setLocation (state, location) {
     state.location = location
+  },
+  getDetail (state, res) {
+    state.detail = res.data.result
   }
 }

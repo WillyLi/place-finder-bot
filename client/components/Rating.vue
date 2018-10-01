@@ -37,7 +37,6 @@ export default {
 
 <style lang="scss" scoped>
 .rating {
-  margin-top: 5px;
   &_score {
     display: inline-block;
     color: #e7711b;

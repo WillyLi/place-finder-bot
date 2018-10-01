@@ -26,7 +26,7 @@ export default {
     this.$store.commit('setLocation', location)
     axios
       .get(uri, {
-        params: { location, rankby: 'distance', types: type, key: googleKey }
+        params: { location, rankby: 'distance', types: type, key: googleKey, language: 'zh-TW' }
       })
       .then(res => {
         this.$store.commit('setPlaces', res)

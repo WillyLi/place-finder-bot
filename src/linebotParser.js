@@ -1,5 +1,4 @@
 const linebot = require('linebot')
-console.log(process.env.channelId)
 const bot = linebot({
   channelId: process.env.channelId,
   channelSecret: process.env.channelSecret,
@@ -7,7 +6,7 @@ const bot = linebot({
 })
 
 bot.on('message', function (event) {
-  if (event.message.type === 'text') {
+  if (event.message.type === 'text' && event.message.text.search('line://') === -1) {
     event.reply({
       type: 'template',
       altText: '你想知道哪裡的餐廳嗎？找不到最近的加油站？點擊下方按鈕[傳送位置資訊]，PlaceFinder幫你找到你想找的地點！',

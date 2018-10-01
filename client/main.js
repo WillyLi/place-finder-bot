@@ -4,6 +4,22 @@ import Vue from 'vue'
 import store from './store/index'
 import VueRouter from 'vue-router'
 import router from './router'
+import {
+  library
+} from '@fortawesome/fontawesome-svg-core'
+import {
+  faGlobe,
+  faMapMarkerAlt,
+  faPhone,
+  faClock
+} from '@fortawesome/free-solid-svg-icons'
+import {
+  FontAwesomeIcon
+} from '@fortawesome/vue-fontawesome'
+
+library.add(faGlobe, faMapMarkerAlt, faPhone, faClock)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 

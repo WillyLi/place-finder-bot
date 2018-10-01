@@ -20,7 +20,10 @@ export default new VueRouter({
   },
   {
     path: '/app/finder-detail',
-    component: FinderDetail
+    component: FinderDetail,
+    query: {
+      place_id: 'private'
+    }
   }
   ]
 })
