@@ -11,9 +11,6 @@
 export default {
   name: 'rating',
   props: ['score'],
-  data () {
-    return {}
-  },
   computed: {
     stars () {
       let count = Math.round(this.score * 2) / 2

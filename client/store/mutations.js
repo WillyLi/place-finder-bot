@@ -13,7 +13,10 @@ export default {
   setLocation (state, location) {
     state.location = location
   },
-  getDetail (state, res) {
+  setDetail (state, res) {
     state.detail = res.data.result
+  },
+  setPageToken (state, token) {
+    state.pageToken = token
   }
 }

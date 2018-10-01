@@ -23,9 +23,6 @@ export default {
   name: 'review',
   components: { Rating },
   props: ['review'],
-  data () {
-    return {}
-  },
   computed: {
     photoStyle () {
       return {'background-image': 'url(' + this.review.profile_photo_url + ')'}

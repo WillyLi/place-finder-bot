@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { mapState } from 'vuex'
 import Gallery from '@/components/Gallery'
 import Rating from '@/components/Rating'
@@ -40,9 +39,6 @@ import Review from '@/components/Review'
 export default {
   name: 'FinderDetail',
   components: { Gallery, Rating, Review },
-  data: () => {
-    return {}
-  },
   computed: {
     place_id () {
       return this.$route.query.place_id
@@ -68,27 +64,10 @@ export default {
   },
   beforeMount () {
     //  Request place detail data from google place api
-    let googleKey = process.env.googleKey
     let placeid = this.place_id
-
-    // TODO: cors work around by cors-anywhere
-    let uri =
-      'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json'
-    axios
-      .get(uri, {
-        params: { placeid: placeid, key: googleKey, language: 'zh-TW' }
-      })
-      .then(res => {
-        this.$store.commit('getDetail', res)
-        if (process.env.NODE_ENV === 'development') {
-          console.log(res)
-        }
-      })
-      .catch(error => {
-        if (process.env.NODE_ENV === 'development') {
-          console.log(error)
-        }
-      })
+    let params =
+      { placeid: placeid }
+    this.$store.dispatch('getDetail', params)
   }
 }
 </script>

@@ -6,39 +6,21 @@
 
 <script>
 import PlaceList from '@/components/PlaceList'
-import axios from 'axios'
 
 export default {
   name: 'FinderList',
   components: { PlaceList },
-  data: () => {
-    return {}
-  },
   beforeMount () {
     //  Request nearby places data from google place api
     let location = this.$route.query.location.trim()
     let type = this.$route.query.types.trim()
-    let googleKey = process.env.googleKey
-
-    // TODO: cors work around by cors-anywhere
-    let uri =
-      'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json'
+    let params = {
+      location,
+      rankby: 'distance',
+      types: type
+    }
     this.$store.commit('setLocation', location)
-    axios
-      .get(uri, {
-        params: { location, rankby: 'distance', types: type, key: googleKey, language: 'zh-TW' }
-      })
-      .then(res => {
-        this.$store.commit('setPlaces', res)
-        if (process.env.NODE_ENV === 'development') {
-          console.log(res)
-        }
-      })
-      .catch(error => {
-        if (process.env.NODE_ENV === 'development') {
-          console.log(error)
-        }
-      })
+    this.$store.dispatch('getList', params)
   }
 }
 </script>

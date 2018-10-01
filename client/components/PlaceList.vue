@@ -15,9 +15,6 @@ import Place from '@/components/Place'
 export default {
   name: 'placeList',
   components: { Place },
-  data () {
-    return {}
-  },
   computed: mapState({
     places: state => state.places
   })

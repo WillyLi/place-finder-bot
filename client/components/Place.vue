@@ -27,9 +27,6 @@ export default {
   name: 'place',
   components: { Rating, Gallery },
   props: ['placeInfo'],
-  data () {
-    return {}
-  },
   computed: {
     googleMapDeepLink () {
       return (
