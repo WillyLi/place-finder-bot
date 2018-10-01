@@ -12,7 +12,8 @@ const store = new Vuex.Store({
     places: [],
     location: '',
     detail: {},
-    pageToken: ''
+    pageTokens: new Set(),
+    nextPageToken: ''
   },
   getters,
   actions,

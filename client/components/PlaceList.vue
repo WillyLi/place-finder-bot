@@ -31,7 +31,10 @@ export default {
     & > li {
       background: #ffffff;
       border: 1px solid #dddddd;
-      margin-bottom: 20px;
+      margin-top: 20px;
+      &:first-child {
+        margin-top: 0;
+      }
     }
   }
 }

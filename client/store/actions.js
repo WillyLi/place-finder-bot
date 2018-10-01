@@ -4,28 +4,35 @@ const googleKey = process.env.googleKey
 const language = 'zh-TW'
 export default {
   getList ({
-    commit
+    commit,
+    state
   }, payload) {
-    axios
-      .get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
-        params: {
-          key: googleKey,
-          language,
-          ...payload
-        }
-      })
-      .then(res => {
-        commit('setPlaces', res)
-        commit('setPageToken', res.next_page_token)
-        if (process.env.NODE_ENV === 'development') {
-          console.log(res)
-        }
-      })
-      .catch(error => {
-        if (process.env.NODE_ENV === 'development') {
-          console.log(error)
-        }
-      })
+    let nextPageToken = state.nextPageToken
+    if (!state.pageTokens.has(nextPageToken) && nextPageToken !== 'end') {
+      axios
+        .get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
+          params: {
+            key: googleKey,
+            language,
+            pagetoken: nextPageToken,
+            ...payload
+          }
+        })
+        .then(res => {
+          commit('setPlaces', res.data.results)
+          commit('setPageTokens', nextPageToken)
+          commit('setNextPageToken', res.data.next_page_token || 'end')
+
+          if (process.env.NODE_ENV === 'development') {
+            console.log(res)
+          }
+        })
+        .catch(error => {
+          if (process.env.NODE_ENV === 'development') {
+            console.log(error)
+          }
+        })
+    }
   },
   getDetail ({
     commit

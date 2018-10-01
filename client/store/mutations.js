@@ -1,6 +1,6 @@
 export default {
-  setPlaces (state, res) {
-    state.places = res.data.results.map((val) => ({
+  setPlaces (state, places) {
+    state.places = state.places.concat(places.map((val) => ({
       lat: val.geometry.location.lat,
       lng: val.geometry.location.lng,
       name: val.name,
@@ -8,7 +8,7 @@ export default {
       place_id: val.place_id,
       rating: val.rating,
       vicinity: val.vicinity
-    }))
+    })))
   },
   setLocation (state, location) {
     state.location = location
@@ -16,7 +16,10 @@ export default {
   setDetail (state, res) {
     state.detail = res.data.result
   },
-  setPageToken (state, token) {
-    state.pageToken = token
+  setPageTokens (state, token) {
+    state.pageTokens.add(token)
+  },
+  setNextPageToken (state, token) {
+    state.nextPageToken = token
   }
 }
