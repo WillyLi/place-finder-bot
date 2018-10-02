@@ -5,7 +5,7 @@ const bot = linebot({
   channelAccessToken: process.env.channelAccessToken.slice(1, -1)
 })
 bot.on('message', function (event) {
-  if (event.message.type === 'text' && event.message.text.search('line://') === -1) {
+  if (event.message.type !== 'location' && event.message.text.search('line://') === -1) {
     event.reply({
       type: 'template',
       altText: '你想知道哪裡的餐廳嗎？找不到最近的加油站？點擊下方按鈕[傳送位置資訊]，PlaceFinder幫你找到你想找的地點！',
@@ -28,7 +28,7 @@ bot.on('message', function (event) {
       // error
       console.log(error)
     })
-  } else if (event.message.type === 'location') {
+  } else {
     let location = event.message.latitude + ',' + event.message.longitude
     let listLiffID = process.env.listLiffID.slice(1, -1)
     console.log(process.env.listLiffID.slice(1, -1))
