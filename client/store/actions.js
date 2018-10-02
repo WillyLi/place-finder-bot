@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-const googleKey = process.env.googleKey
 const language = 'zh-TW'
 export default {
   getList ({
@@ -12,7 +11,6 @@ export default {
       axios
         .get(process.env.domain + 'api/getList', {
           params: {
-            key: googleKey,
             language,
             pagetoken: nextPageToken,
             location: payload.location,
@@ -41,9 +39,8 @@ export default {
     commit
   }, payload) {
     axios
-      .get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json', {
+      .get(process.env.domain + 'api/getDetail', {
         params: {
-          key: googleKey,
           language,
           ...payload
         }

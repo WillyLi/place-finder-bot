@@ -10,7 +10,8 @@ const linebotParser = require('../src/linebotParser')
 const app = express()
 
 const {
-  getListParser
+  getListParser,
+  getDetailParser
 } = require('../src/api')
 
 app.use(express.static(path.resolve(__dirname, '../dist')))
@@ -23,6 +24,7 @@ app.get('/app/*', function (req, res) {
 app.post('/chatbot', linebotParser)
 
 app.get('/api/getList', getListParser)
+app.get('/api/getDetail', getDetailParser)
 
 app.listen(port, function () {
   console.log('Listening on port ' + port)
