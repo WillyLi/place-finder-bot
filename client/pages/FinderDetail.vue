@@ -15,7 +15,7 @@
       </div>
       <div>
         <font-awesome-icon icon="map-marker-alt" />
-        <span>{{ detail.formatted_address }}</span>
+        <span><a :href="googleMapDeepLink">{{ detail.formatted_address }}</a></span>
       </div>
       <div>
         <font-awesome-icon icon="globe" />
@@ -52,6 +52,13 @@ export default {
       } else {
         return null
       }
+    },
+    googleMapDeepLink () {
+      return (
+        'comgooglemaps://?q=' +
+        this.detail.name +
+        '&views=traffic&zoom=15'
+      )
     }
   },
   methods: {

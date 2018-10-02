@@ -41,15 +41,10 @@ export default {
   }
 }
 .loading {
-  position: fixed;
-  left: 0;
-  bottom: -30px;
   width: 100%;
   text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 30px;
   height: 50px;
+  line-height: 50px;
   img {
     height: 50px;
   }

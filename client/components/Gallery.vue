@@ -35,8 +35,8 @@ export default {
       }
     }
   },
-  mounted () {
-    if (this.photos) {
+  updated () {
+    if (this.photos && this.photos.length > 1) {
       this.swiperInstance = new Swiper(this.$refs.swiper, this.swiperConfig)
     }
   },
