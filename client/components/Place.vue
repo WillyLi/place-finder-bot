@@ -6,6 +6,10 @@
       </div>
       <div class="place_text">
         <div class="place_name">{{placeInfo.name}}</div>
+        <div class="place_isOpen">
+          <span v-if="opening" class="opening">營業中</span>
+          <span v-if="!opening" class="closing">休息中</span>
+        </div>
         <div class="place_rating">
           <Rating :score="placeInfo.rating" />
         </div>
@@ -37,8 +41,14 @@ export default {
         this.$store.state.location +
         '&views=traffic&zoom=15'
       )
+    },
+    opening () {
+      if (this.placeInfo.opening_hours) {
+        return this.placeInfo.opening_hours.open_now
+      } else {
+        return null
+      }
     }
-
   },
   methods: {
     sendMsg () {
@@ -101,5 +111,12 @@ export default {
     font-size: 13px;
     margin-top: 5px;
   }
+  &_isOpen {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+}
+.closing {
+  color: #ac1414;
 }
 </style>

@@ -15,13 +15,16 @@ export default {
             key: googleKey,
             language,
             pagetoken: nextPageToken,
-            ...payload
+            location: payload.location,
+            rankby: payload.rankby,
+            types: payload.types
           }
         })
         .then(res => {
           commit('setPlaces', res.data.results)
           commit('setPageTokens', nextPageToken)
           commit('setNextPageToken', res.data.next_page_token || 'end')
+          window.addEventListener('scroll', payload.scrollHandler)
 
           if (process.env.NODE_ENV === 'development') {
             console.log(res)

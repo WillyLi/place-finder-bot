@@ -1,10 +1,9 @@
 const linebot = require('linebot')
 const bot = linebot({
-  channelId: process.env.channelId,
-  channelSecret: process.env.channelSecret,
-  channelAccessToken: process.env.channelAccessToken
+  channelId: process.env.channelId.slice(1, -1),
+  channelSecret: process.env.channelSecret.slice(1, -1),
+  channelAccessToken: process.env.channelAccessToken.slice(1, -1)
 })
-
 bot.on('message', function (event) {
   if (event.message.type === 'text' && event.message.text.search('line://') === -1) {
     event.reply({
@@ -15,7 +14,7 @@ bot.on('message', function (event) {
         text: '你想知道哪裡的餐廳嗎？找不到最近的加油站？點擊下方按鈕[傳送位置資訊]，PlaceFinder幫你找到你想找的地點！',
         imageAspectRatio: 'rectangle',
         imageSize: 'contain',
-        thumbnailImageUrl: process.env.domain + 'static/brownThinking.jpg',
+        thumbnailImageUrl: process.env.domain.slice(1, -1) + 'static/brownThinking.jpg',
         imageBackgroundColor: '#ffffff',
         actions: [{
           type: 'location',
@@ -31,6 +30,9 @@ bot.on('message', function (event) {
     })
   } else if (event.message.type === 'location') {
     let location = event.message.latitude + ',' + event.message.longitude
+    let listLiffID = process.env.listLiffID.slice(1, -1)
+    console.log(process.env.listLiffID.slice(1, -1))
+
     event.reply({
       type: 'template',
       altText: '你在找哪種地點呢？',
@@ -39,27 +41,27 @@ bot.on('message', function (event) {
         text: '你在找哪種地點呢？',
         imageAspectRatio: 'rectangle',
         imageSize: 'cover',
-        thumbnailImageUrl: process.env.domain + 'static/hangout.jpg',
+        thumbnailImageUrl: process.env.domain.slice(1, -1) + 'static/hangout.jpg',
         imageBackgroundColor: '#00cd02',
         actions: [{
           type: 'uri',
           label: '餐廳',
-          uri: 'line://app/' + process.env.listLiffID + '?types=restaurant&location=' + location
+          uri: 'line://app/' + listLiffID + '?types=restaurant&location=' + location
         },
         {
           type: 'uri',
           label: '藥局',
-          uri: 'line://app/' + process.env.listLiffID + '?types=pharmacy&location=' + location
+          uri: 'line://app/' + listLiffID + '?types=pharmacy&location=' + location
         },
         {
           type: 'uri',
           label: '加油站',
-          uri: 'line://app/' + process.env.listLiffID + '?types=gas_station&location=' + location
+          uri: 'line://app/' + listLiffID + '?types=gas_station&location=' + location
         },
         {
           type: 'uri',
           label: '便利商店',
-          uri: 'line://app/' + process.env.listLiffID + '?types=convenience_store&location=' + location
+          uri: 'line://app/' + listLiffID + '?types=convenience_store&location=' + location
         }
         ]
       }

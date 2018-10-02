@@ -7,7 +7,8 @@ export default {
       photos: val.photos || null,
       place_id: val.place_id,
       rating: val.rating,
-      vicinity: val.vicinity
+      vicinity: val.vicinity,
+      opening_hours: val.opening_hours
     })))
   },
   setLocation (state, location) {
