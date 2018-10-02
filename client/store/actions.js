@@ -8,6 +8,7 @@ export default {
   }, payload) {
     let nextPageToken = state.nextPageToken
     if (!state.pageTokens.has(nextPageToken) && nextPageToken !== 'end') {
+      commit('setLoading', true)
       axios
         .get(process.env.domain + 'api/getList', {
           params: {
@@ -21,6 +22,7 @@ export default {
         .then(res => {
           commit('setPlaces', res.data.results)
           commit('setPageTokens', nextPageToken)
+          commit('setLoading', false)
           commit('setNextPageToken', res.data.next_page_token || 'end')
           window.addEventListener('scroll', payload.scrollHandler)
 

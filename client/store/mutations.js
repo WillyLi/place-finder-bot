@@ -22,5 +22,8 @@ export default {
   },
   setNextPageToken (state, token) {
     state.nextPageToken = token
+  },
+  setLoading (state, isLoading) {
+    state.isLoading = isLoading
   }
 }

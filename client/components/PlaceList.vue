@@ -5,7 +5,8 @@
         <Place :placeInfo="place" />
       </li>
     </ul>
-  </div>
+    <div class="loading" v-if="isLoading"><img src="../assets/loading.gif" alt=""></div>
+    </div>
 </template>
 
 <script>
@@ -16,7 +17,8 @@ export default {
   name: 'placeList',
   components: { Place },
   computed: mapState({
-    places: state => state.places
+    places: state => state.places,
+    isLoading: state => state.isLoading
   })
 }
 </script>
@@ -36,6 +38,20 @@ export default {
         margin-top: 0;
       }
     }
+  }
+}
+.loading {
+  position: fixed;
+  left: 0;
+  bottom: -30px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 30px;
+  height: 50px;
+  img {
+    height: 50px;
   }
 }
 </style>
