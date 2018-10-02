@@ -1,21 +1,19 @@
 <template>
   <div class="place">
-    <a @click="openDetail">
-      <div class="place_photos">
-        <Gallery :photos="placeInfo.photos" :height="200" />
+    <div class="place_photos">
+      <Gallery :photos="placeInfo.photos" :height="200" />
+    </div>
+    <div class="place_text">
+      <div class="place_name">{{placeInfo.name}}</div>
+      <div class="place_isOpen">
+        <span v-if="opening" class="opening">營業中</span>
+        <span v-if="!opening" class="closing">休息中</span>
       </div>
-      <div class="place_text">
-        <div class="place_name">{{placeInfo.name}}</div>
-        <div class="place_isOpen">
-          <span v-if="opening" class="opening">營業中</span>
-          <span v-if="!opening" class="closing">休息中</span>
-        </div>
-        <div class="place_rating">
-          <Rating :score="placeInfo.rating" />
-        </div>
-        <div class="place_vicinity">{{placeInfo.vicinity}}</div>
+      <div class="place_rating">
+        <Rating :score="placeInfo.rating" />
       </div>
-    </a>
+      <div class="place_vicinity">{{placeInfo.vicinity}}</div>
+    </div>
     <div class="place_actions">
       <a :href="googleMapDeepLink">Google Map</a>
       <a @click="sendMsg">就是這個！</a>
@@ -61,19 +59,6 @@ export default {
         .then(() => {
           console.log('message sent')
           window.liff.closeWindow()
-        })
-        .catch((err) => {
-          console.log('error', err)
-        })
-    },
-    openDetail () {
-      let placeID = this.placeInfo.place_id
-      window.liff.closeWindow()
-      window.liff.openWindow([{
-        url: 'line://app/' + process.env.detailLiffID + '?place_id=' + placeID
-      }])
-        .then(() => {
-          console.log('detail opened')
         })
         .catch((err) => {
           console.log('error', err)
