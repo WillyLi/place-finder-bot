@@ -10,7 +10,7 @@ export default {
     let nextPageToken = state.nextPageToken
     if (!state.pageTokens.has(nextPageToken) && nextPageToken !== 'end') {
       axios
-        .get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
+        .get(process.env.domain + 'api/getList', {
           params: {
             key: googleKey,
             language,
