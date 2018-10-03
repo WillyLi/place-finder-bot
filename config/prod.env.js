@@ -9,7 +9,6 @@ module.exports = {
   channelAccessToken: '"GuwaYCruI+VDwEp/gWZ4O61Wx7WzOBu5/5/Ir1mybSuDfY3ur2jjjIKZPZTjz7iQ6v7XBTEP+zfDxq2KzHlpuaJZUV7wPLIjkhrVMcjnn72qYzD4SN5u98usLFkT96r9EW6DglSSrb7rmo6ryOt7dAdB04t89/1O/w1cDnyilFU="',
   listLiffID: '"1610106375-95yDl55L"',
   detailLiffID: '"1610106375-95yDl55L"',
-  // domain: '"https://place-finder-bot.herokuapp.com/"',
-  domain: '"https://21a7507e.ngrok.io/"',
+  domain: '"https://place-finder-bot.herokuapp.com/"',
   googlePhotoUrl: '"https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference="'
 }
