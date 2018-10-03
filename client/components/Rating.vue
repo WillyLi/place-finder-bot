@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'rating',
-  props: ['score'],
+  props: {score: Number},
   computed: {
     stars () {
       let count = Math.round(this.score * 2) / 2

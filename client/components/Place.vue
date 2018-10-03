@@ -28,7 +28,7 @@ import Gallery from '@/components/Gallery'
 export default {
   name: 'place',
   components: { Rating, Gallery },
-  props: ['placeInfo'],
+  props: {placeInfo: Object},
   computed: {
     googleMapDeepLink () {
       return (

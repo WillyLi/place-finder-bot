@@ -19,7 +19,10 @@ import 'swiper/dist/css/swiper.css'
 export default {
   name: 'gallery',
   components: { Photo },
-  props: ['height', 'photos'],
+  props: {
+    height: Number,
+    photos: Array
+  },
   data () {
     return {
       loop: true

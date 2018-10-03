@@ -52,6 +52,7 @@ export default {
     this.location = this.$route.query.location.trim()
     this.type = this.$route.query.types.trim()
 
+    // define which scrollElement should be watched
     if (typeof window.pageYOffset !== 'undefined') {
       this.scrollElement = {element: window, attr: 'pageYOffset'}
     } else if (typeof document.compatMode !== 'undefined' && document.compatMode !== 'BackCompat') {

@@ -10,6 +10,6 @@ module.exports = {
   listLiffID: '"1610106375-95yDl55L"',
   detailLiffID: '"1610106375-95yDl55L"',
   // domain: '"https://place-finder-bot.herokuapp.com/"',
-  domain: '"https://b431383f.ngrok.io/"',
+  domain: '"https://21a7507e.ngrok.io/"',
   googlePhotoUrl: '"https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference="'
 }

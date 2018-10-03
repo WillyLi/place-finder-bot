@@ -22,7 +22,7 @@ import Rating from '@/components/Rating'
 export default {
   name: 'review',
   components: { Rating },
-  props: ['review'],
+  props: {review: Object},
   computed: {
     photoStyle () {
       return {'background-image': 'url(' + this.review.profile_photo_url + ')'}

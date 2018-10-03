@@ -9,15 +9,15 @@
         <span v-if="opening" class="opening">營業中</span>
         <span v-if="!opening" class="closing">休息中</span>
       </div>
-      <div>
+      <div v-if="detail.formatted_phone_number">
         <font-awesome-icon icon="phone" />
         <span><a :href="'tel:'+detail.formatted_phone_number">{{ detail.formatted_phone_number }}</a></span>
       </div>
-      <div>
+      <div v-if="detail.formatted_address">
         <font-awesome-icon icon="map-marker-alt" />
         <span><a :href="googleMapDeepLink">{{ detail.formatted_address }}</a></span>
       </div>
-      <div>
+      <div v-if="detail.website">
         <font-awesome-icon icon="globe" />
         <span><a @click="openWebsite">{{ detail.website }}</a></span>
       </div>
@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import Gallery from '@/components/Gallery'
 import Rating from '@/components/Rating'
 import Review from '@/components/Review'
 
 export default {
-  name: 'FinderDetail',
+  name: 'finder-detail',
   components: { Gallery, Rating, Review },
   computed: {
     place_id () {
@@ -67,14 +67,12 @@ export default {
         url: this.detail.website,
         external: true
       })
-    }
+    },
+    ...mapActions(['getDetail'])
   },
-  beforeMount () {
+  created () {
     //  Request place detail data from google place api
-    let placeid = this.place_id
-    let params =
-      { placeid: placeid }
-    this.$store.dispatch('getDetail', params)
+    this.getDetail({ placeid: this.place_id })
   }
 }
 </script>

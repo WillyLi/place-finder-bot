@@ -1,5 +1,5 @@
 <template>
-    <div class="photo" :style="style"></div>
+  <div class="photo" :style="style"></div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ const imagePlaceholder = process.env.imagePlaceholder
 
 export default {
   name: 'photo',
-  props: ['photo'],
+  props: {photo: Object},
   computed: {
     photoURI () {
       if (this.photo === null) {
