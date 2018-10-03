@@ -3,7 +3,7 @@ const nearbysearchApi = 'https://maps.googleapis.com/maps/api/place/nearbysearch
 const detailApi = 'https://maps.googleapis.com/maps/api/place/details/json'
 const googleKey = process.env.googleKey.slice(1, -1)
 
-module.exports.getListParser = function (req, res) {
+module.exports.listController = function (req, res) {
   let payload = {
     key: googleKey,
     ...req.query
@@ -21,7 +21,7 @@ module.exports.getListParser = function (req, res) {
     })
 }
 
-module.exports.getDetailParser = function (req, res) {
+module.exports.detailController = function (req, res) {
   let payload = {
     key: googleKey,
     ...req.query
